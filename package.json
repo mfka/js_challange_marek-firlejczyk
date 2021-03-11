@@ -11,6 +11,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "axios-case-converter": "^0.7.0",
     "vue": "^3.0.5"
   },
   "devDependencies": {
