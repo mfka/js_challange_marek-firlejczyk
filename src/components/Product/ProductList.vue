@@ -20,3 +20,19 @@ export default {
   components: { ProductCard, Pagination },
 }
 </script>
+
+<style scoped>
+.product-list {
+  @apply grid;
+  @apply grid-cols-1;
+  @apply gap-4;
+
+  @screen md {
+    @apply grid-cols-2;
+  }
+
+  @screen lg {
+    @apply grid-cols-3;
+  }
+}
+</style>

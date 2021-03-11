@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Lato-Bold';
+  src: url('fonts/Lato-Bold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Lato-BoldItalic';
+  src: url('fonts/Lato-BoldItalic.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Lato-Italic';
+  src: url('fonts/Lato-Italic.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url('fonts/Lato-Regular.ttf') format('ttf');
+}
+
+h1,
+p,
+figure {
+  @apply m-0;
+  @apply font-normal;
+}
+
+a {
+  &,
+  &:hover,
+  &:visited {
+    @apply no-underline;
+    @apply text-primary;
+  }
+}
+
+ul,
+li {
+  @apply p-0;
+  @apply m-0;
+  @apply list-none;
+}

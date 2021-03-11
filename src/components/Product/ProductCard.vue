@@ -1,25 +1,8 @@
 <template>
   <article class="product" itemscope itemtype="http://schema.org/Product">
     <figure class="product__image-wrapper">
-      <img class="product__image" src="images/activity_image.jpeg" alt="Product" itemprop="image" />
       <button class="product__wishlist-button button button--round button--wishlist">
-        <svg
-          class="icon"
-          width="20px"
-          height="20px"
-          viewBox="0 6 20 20"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
-          <title>Wishlist Icon</title>
-          <polygon
-            id="Wishlist-Icon"
-            stroke="none"
-            fill-rule="evenodd"
-            points="12.3598869 13.2675869 20 13.2675869 13.8200565 17.7545318 16.1782804 25.0221187 9.99833694 20.5318477 3.81839348 25.0221187 6.17994346 17.7545318 0 13.2675869 7.63678696 13.2675869 9.99833694 6"
-          ></polygon>
-        </svg>
+        <StarIcon />
       </button>
     </figure>
     <div class="product__details">
@@ -35,7 +18,147 @@
 </template>
 
 <script lang="ts">
+import StarIcon from '../Icon/StarIcon.vue'
+
 export default {
   name: 'ProductCard',
+  components: { StarIcon },
 }
 </script>
+
+<style lang="scss" scoped>
+/* ==========================================================================
+   Product
+   ========================================================================== */
+
+.product {
+  @apply flex;
+  @apply flex-col;
+  @apply h-full;
+
+  background-color: var(--primary-bg-color);
+}
+
+/* ==========================================================================
+   Product Image
+   ========================================================================== */
+
+.product__image-wrapper {
+  @apply p-5;
+  @apply relative;
+  @apply text-center;
+}
+
+.product__image {
+  @apply max-w-full;
+  @apply h-auto;
+  @apply mx-auto;
+}
+
+/* ==========================================================================
+   Product Details
+   ========================================================================== */
+
+.product__details {
+  @apply flex;
+  @apply flex-col;
+  @apply text-center;
+  @apply px-5;
+  @apply pb-5;
+  @apply pt-3;
+
+  flex: 1 0 auto;
+}
+
+/* ==========================================================================
+   Product Titles
+   ========================================================================== */
+
+.product__title {
+  @apply uppercase;
+  @apply pb-2;
+  @apply text-sm;
+
+  font-family: 'Lato-Bold', sans-serif;
+  letter-spacing: 1.37px;
+}
+
+.product__subtitle {
+  @apply pb-2;
+  @apply text-xs;
+
+  line-height: 19px;
+  letter-spacing: 0.43px;
+  color: var(--grey);
+}
+
+/* ==========================================================================
+   Product Prices
+   ========================================================================== */
+
+.product__price {
+  @apply pb-5;
+  @apply text-sm;
+
+  font-family: 'Lato-Bold', sans-serif;
+  letter-spacing: 2.33px;
+}
+
+.product__price--strike {
+  @apply mr-4;
+  @apply line-through;
+}
+
+.product__price--discounted {
+  color: var(--red);
+}
+
+/* ==========================================================================
+   Product actions
+   ========================================================================== */
+
+.product__wishlist-button {
+  @apply w-10;
+  @apply h-10;
+  @apply flex;
+  @apply justify-center;
+  @apply items-center;
+  @apply rounded-full;
+  @apply absolute;
+
+  top: 10px;
+  right: 10px;
+
+  &:hover {
+    border: 1px solid var(--primary-color);
+
+    .icon {
+      fill: var(--primary-color);
+    }
+  }
+
+  &:focus {
+    @apply outline-none;
+
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.product__add-to-cart {
+  @apply w-full;
+
+  margin-top: 10px;
+  margin-top: auto;
+
+  &:focus {
+    @apply outline-none;
+
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.product__add-to-cart--remove {
+  color: var(--primary-bg-color);
+  background-color: var(--primary-color);
+}
+</style>

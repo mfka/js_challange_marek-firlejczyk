@@ -1,0 +1,52 @@
+@use './styles/typography.scss';
+@use './styles/buttons.scss';
+
+@tailwind screen;
+
+:root {
+  --max-screen-width: 1240px;
+  --primary-color: #444a59;
+  --secondary-color: #d9d9d9;
+  --primary-bg-color: #fff;
+  --secondary-bg-color: #f8f8f8;
+  --red: #f54b5e;
+  --blue: #358ed7;
+  --grey: #808080;
+}
+
+* {
+  @apply box-border;
+}
+
+html {
+  @apply h-auto;
+}
+
+body {
+  @apply min-h-full;
+  @apply m-0;
+  @apply flex;
+  @apply flex-col;
+  @apply text-primary;
+  @apply bg-secondary-bg;
+
+  flex: 1 0 auto;
+  font-family: 'Lato-Regular', sans-serif;
+  font-size: 13px;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale; /* Font smoothing tweaks for MacOSx in Gecko */
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  @apply w-full;
+  @apply px-6;
+  @apply mx-auto;
+  @apply my-0;
+
+  @screen md {
+    @apply px-10;
+  }
+
+  max-width: var(--max-screen-width);
+}

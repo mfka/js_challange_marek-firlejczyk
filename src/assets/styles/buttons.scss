@@ -1,0 +1,28 @@
+button {
+  appearance: none;
+  border: 0;
+}
+
+.button {
+  @apply cursor-pointer;
+  @apply bg-primary-bg;
+
+  border: 1px solid var(--secondary-color);
+  border-radius: 100px;
+  transition: 0.3s border, 0.3s color, 0.3s background-color;
+}
+
+.button--primary {
+  @apply p-3;
+  @apply text-sm;
+  @apply uppercase;
+  @apply tracking-widest;
+
+  font-family: 'Lato-Bold', sans-serif;
+}
+
+.button--primary:hover {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-bg-color);
+  background-color: var(--primary-color);
+}
