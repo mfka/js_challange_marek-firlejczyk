@@ -1,13 +1,14 @@
 <template>
-  <span>Lets start...</span>
+  <Products />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import Products from './views/Products.vue'
 
-export default defineComponent({
+export default {
   name: 'App',
-})
+  components: { Products },
+}
 </script>
 
 <style></style>
