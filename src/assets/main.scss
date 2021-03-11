@@ -38,6 +38,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+main {
+  @apply flex;
+  @apply flex-row;
+  @apply mt-7;
+  @apply mb-5;
+
+  flex: 1 0 auto;
+}
+
 .container {
   @apply w-full;
   @apply px-6;

@@ -2,8 +2,8 @@
   <main class="product-page">
     <div class="container">
       <ul class="product-list">
-        <li v-for="i in new Array(6)" :key="i" class="product-list__item">
-          <ProductCard></ProductCard>
+        <li v-for="(activity, index) in activities" :key="index" class="product-list__item">
+          <ProductCard :product="activity" />
         </li>
       </ul>
       <Pagination />
@@ -12,12 +12,22 @@
 </template>
 
 <script lang="ts">
+import { useActivityStore } from '../../store/useActivityStore'
 import Pagination from '../common/Pagination.vue'
 import ProductCard from './ProductCard.vue'
 
 export default {
-  name: 'PageList',
+  name: 'ProductList',
   components: { ProductCard, Pagination },
+  setup: () => {
+    const { load: loadActivities, activities } = useActivityStore()
+
+    loadActivities()
+
+    return {
+      activities,
+    }
+  },
 }
 </script>
 
