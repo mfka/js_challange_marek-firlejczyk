@@ -5,10 +5,12 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
+    "serve:production": "yarn build && yarn serve",
     "prepare": "husky install",
     "eslint:fix": "eslint --fix",
     "prettier:fix": "prettier --write src",
-    "test": "jest"
+    "test": "jest",
+    "format": "yarn eslint:fix && yarn prettier:fix"
   },
   "dependencies": {
     "axios": "^0.21.1",
