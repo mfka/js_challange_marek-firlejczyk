@@ -34,7 +34,18 @@ $ yarn test
 ```
 
 ## Production deployment
+Client side rendering is default option in vite(https://vitejs.dev/guide/build.html). SSR is possible if needed. 
+
+To preview application in production mode
 ```
 $ yarn serve:production
 ```
 
+##TODO
+- Add CI/CD (github actions)
+- Add commitlint
+- Add stylelint
+- Add E2E tests (Cypress)
+- Add components documentation (Storybook)
+- Add multiple languages support (translations)
+- Add router
