@@ -87,8 +87,7 @@ export default {
   @apply flex;
   @apply flex-col;
   @apply h-full;
-
-  background-color: var(--primary-bg-color);
+  @apply bg-white;
 
   /* ==========================================================================
    Product Image
@@ -135,10 +134,10 @@ export default {
   &__subtitle {
     @apply pb-2;
     @apply text-xs;
+    @apply text-grey;
 
     line-height: 19px;
     letter-spacing: 0.43px;
-    color: var(--grey);
   }
 
   /* ==========================================================================
@@ -158,7 +157,7 @@ export default {
     }
 
     &--discounted {
-      color: var(--red);
+      @apply text-red;
     }
   }
 
@@ -179,17 +178,20 @@ export default {
     right: 10px;
 
     &:hover {
-      border: 1px solid var(--primary-color);
+      @apply border-primary;
+      @apply border;
+      @apply border-solid;
 
       .icon {
-        fill: var(--primary-color);
+        @apply fill-primary;
       }
     }
 
     &:focus {
       @apply outline-none;
-
-      border: 1px solid var(--primary-color);
+      @apply border-primary;
+      @apply border;
+      @apply border-solid;
     }
   }
 
@@ -201,13 +203,14 @@ export default {
 
     &:focus {
       @apply outline-none;
-
-      border: 1px solid var(--primary-color);
+      @apply border-primary;
+      @apply border;
+      @apply border-solid;
     }
 
     &--remove {
-      color: var(--primary-bg-color);
-      background-color: var(--primary-color);
+      @apply bg-primary;
+      @apply text-secondary-bg;
     }
   }
 }

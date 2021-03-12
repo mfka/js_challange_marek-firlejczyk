@@ -24,8 +24,7 @@ export default {
   @apply sticky;
   @apply top-0;
   @apply z-10;
-
-  background-color: var(--primary-bg-color);
+  @apply bg-white;
 }
 
 .page-title {

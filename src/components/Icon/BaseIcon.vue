@@ -43,13 +43,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .icon {
+  @apply fill-secondary;
+
   width: 20px;
   height: 20px;
-  fill: var(--secondary-color);
   transition: 0.3s fill;
 
   &--active {
-    fill: var(--primary-color);
+    @apply fill-primary;
   }
 }
 </style>

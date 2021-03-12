@@ -1,17 +1,8 @@
 @use './styles/typography.scss';
 @use './styles/buttons.scss';
 
-@tailwind screen;
-
 :root {
   --max-screen-width: 1240px;
-  --primary-color: #444a59;
-  --secondary-color: #d9d9d9;
-  --primary-bg-color: #fff;
-  --secondary-bg-color: #f8f8f8;
-  --red: #f54b5e;
-  --blue: #358ed7;
-  --grey: #808080;
 }
 
 * {

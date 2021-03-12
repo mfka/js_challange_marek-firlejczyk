@@ -90,12 +90,13 @@ export default {
   }
 
   &__link {
+    @apply text-primary;
+
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #444a59;
     &:hover {
       text-decoration: underline;
     }

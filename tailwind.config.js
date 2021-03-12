@@ -15,6 +15,11 @@ module.exports = {
       fontSize: {
         xxs: '.5rem',
       },
+      fill: theme => ({
+        current: 'currentColor',
+        primary: theme('colors.primary'),
+        secondary: theme('colors.secondary'),
+      }),
     },
   },
   variants: {

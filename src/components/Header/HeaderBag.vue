@@ -53,8 +53,7 @@ export default {
 
 .header-bag__item .icon {
   @apply h-auto;
-
-  fill: var(--primary-color);
+  @apply fill-primary;
 }
 
 .header-bag__price {

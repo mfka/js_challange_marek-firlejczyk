@@ -19,7 +19,7 @@ export default {
   @apply h-14;
   @apply items-center;
   @apply uppercase;
-  @apply bg-primary-bg;
+  @apply bg-white;
 
   &__sidenote {
     font-family: 'Lato-Bold', sans-serif;

@@ -1,13 +1,14 @@
 button {
-  appearance: none;
-  border: 0;
+  @apply border-none;
+  @apply appearance-none;
 }
 
 .button {
   @apply cursor-pointer;
   @apply bg-white;
-
-  border: 1px solid var(--secondary-color);
+  @apply border-primary;
+  @apply border;
+  @apply border-solid;
   border-radius: 100px;
   transition: 0.3s border, 0.3s color, 0.3s background-color;
 }
@@ -23,7 +24,8 @@ button {
 
 .button--primary:hover {
   @apply text-white;
-
-  border: 1px solid var(--primary-color);
-  background-color: var(--primary-color);
+  @apply bg-primary;
+  @apply border-primary;
+  @apply border;
+  @apply border-solid;
 }
