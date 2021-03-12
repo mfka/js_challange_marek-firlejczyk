@@ -2,8 +2,8 @@
   <article class="product" itemscope itemtype="http://schema.org/Product">
     <figure class="product__image-wrapper">
       <img :src="coverUrl" class="product__image" alt="Product" itemprop="image" />
-      <button class="product__wishlist-button button button--round button--wishlist" @click="addToWhislist">
-        <StarIcon />
+      <button class="product__wishlist-button button button--round button--wishlist" @click="toggleInWishlist">
+        <StarIcon :class="{ 'icon--active': isInWishlist }" />
       </button>
     </figure>
     <div class="product__details">
@@ -15,7 +15,22 @@
           {{ price }}
         </span>
       </div>
-      <button class="product__add-to-cart button button--primary" @click="addToBag">Add to Cart</button>
+      <button
+        v-if="!isInBag"
+        data-testid="add-to-bag"
+        class="product__add-to-cart button button--primary"
+        @click="addToBag"
+      >
+        Add to Cart
+      </button>
+      <button
+        v-else
+        data-testid="remove-from-bag"
+        class="product__add-to-cart button button--primary product__add-to-cart--remove"
+        @click="removeFromBag"
+      >
+        Remove from Cart
+      </button>
     </div>
   </article>
 </template>
@@ -25,7 +40,9 @@ import { PropType } from '@vue/runtime-core'
 import { computed } from 'vue'
 import { ProductType } from '../../infrastructure/types/ProductType'
 import StarIcon from '../Icon/StarIcon.vue'
-import { CurrencyType } from '../../infrastructure/types/Currency.type'
+import { useBagStore } from '../../store/useBagStore'
+import { formatPrice } from '../../infrastructure/utils/price.utils'
+import { useWishlistStore } from '../../store/useWishlistStore'
 
 export default {
   name: 'ProductCard',
@@ -37,15 +54,10 @@ export default {
     },
   },
   setup: props => {
-    const addToWhislist = () => {}
+    const { isInBag, addItem, removeItem } = useBagStore()
+    const { isInWishlist, addWishItem, removeWishItem } = useWishlistStore()
 
-    const addToBag = {}
-
-    const coverUrl = computed(() => `${props.product.coverUrl}?q=60&fit=crop&w=340&h=200`)
-
-    const formatPrice = (price: number, currency: CurrencyType) =>
-      new Intl.NumberFormat('it-IT', { style: 'currency', currency }).format(price)
-
+    // eslint-disable-next-line prettier/prettier
     const discountedPrice = computed(() =>
       props.product.discountedPrice ? formatPrice(props.product.discountedPrice, props.product.currency) : undefined,
     )
@@ -53,11 +65,16 @@ export default {
     const price = computed(() => formatPrice(props.product.price, props.product.currency))
 
     return {
-      addToWhislist,
-      addToBag,
-      coverUrl,
+      toggleInWishlist: () => {
+        isInWishlist(props.product) ? removeWishItem(props.product) : addWishItem(props.product)
+      },
+      addToBag: () => addItem(props.product),
+      removeFromBag: () => removeItem(props.product),
+      coverUrl: computed(() => `${props.product.coverUrl}?q=60&fit=crop&w=340&h=200`),
       discountedPrice,
       price,
+      isInBag: computed(() => isInBag(props.product)),
+      isInWishlist: computed(() => isInWishlist(props.product)),
     }
   },
 }
