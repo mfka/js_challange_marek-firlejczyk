@@ -12,11 +12,11 @@ describe('#useBagStore', () => {
       addItem(mockedActivityTwo)
       addItem(mockedActivityThree)
 
-      expect(items.value.size).toBe(3)
+      expect(items.value.length).toBe(3)
 
       clear()
 
-      expect(items.value.size).toBe(0)
+      expect(items.value.length).toBe(0)
     })
 
     test('when all items were removed manually', () => {
@@ -24,13 +24,13 @@ describe('#useBagStore', () => {
       addItem(mockedActivityTwo)
       addItem(mockedActivityThree)
 
-      expect(items.value.size).toBe(3)
+      expect(items.value.length).toBe(3)
 
       removeItem(mockedActivityOne)
       removeItem(mockedActivityTwo)
       removeItem(mockedActivityThree)
 
-      expect(items.value.size).toBe(0)
+      expect(items.value.length).toBe(0)
     })
   })
 
@@ -39,8 +39,8 @@ describe('#useBagStore', () => {
       addItem(mockedActivityOne)
       addItem(mockedActivityOne)
 
-      expect(items.value.size).toBe(1)
-      expect(items.value.has(mockedActivityOne)).toBe(true)
+      expect(items.value.length).toBe(1)
+      expect(items.value.some(el => el.id === mockedActivityOne.id)).toBe(true)
     })
   })
 
@@ -51,12 +51,12 @@ describe('#useBagStore', () => {
 
       removeItem(mockedActivityThree)
 
-      expect(items.value.size).toBe(2)
+      expect(items.value.length).toBe(2)
 
       removeItem(mockedActivityOne)
 
-      expect(items.value.size).toBe(1)
-      expect(items.value.has(mockedActivityTwo)).toBe(true)
+      expect(items.value.length).toBe(1)
+      expect(items.value.some(el => el.id === mockedActivityTwo.id)).toBe(true)
     })
   })
 

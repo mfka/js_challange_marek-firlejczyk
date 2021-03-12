@@ -1,11 +1,21 @@
 import { computed, ref } from 'vue'
 import { Activity } from '../domain/Activity/Activity.entity'
 
-const store = ref(new Set<Activity>())
+const store = ref<Activity[]>([])
 
-export const useWishlistStore = () => ({
-  addWishItem: (item: Activity) => store.value.add(item),
-  removeWishItem: (itemToRemove: Activity) => store.value.delete(itemToRemove),
-  totalWishItems: computed(() => store.value.size),
-  isInWishlist: (item: Activity) => store.value.has(item),
-})
+export const useWishlistStore = () => {
+  const isPresent = (item: Activity) => store.value.some(i => i.id === item.id)
+
+  return {
+    addWishItem: (item: Activity) => {
+      if (!isPresent(item)) {
+        store.value.push(item)
+      }
+    },
+    removeWishItem: (item: Activity) => {
+      store.value = store.value.filter(i => i.id !== item.id)
+    },
+    totalWishItems: computed(() => store.value.length),
+    isInWishlist: (item: Activity) => isPresent(item),
+  }
+}

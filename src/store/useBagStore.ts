@@ -2,14 +2,24 @@ import { computed, readonly, ref } from 'vue'
 import { Activity } from '../domain/Activity/Activity.entity'
 import { countTotalPrice } from '../domain/Activity/Activity.implementation'
 
-const store = ref(new Set<Activity>())
+const store = ref<Activity[]>([])
 
-export const useBagStore = () => ({
-  totalPrice: computed(() => countTotalPrice([...store.value])),
-  addItem: (item: Activity) => store.value.add(item),
-  removeItem: (itemToRemove: Activity) => store.value.delete(itemToRemove),
-  items: readonly(store),
-  totalItems: computed(() => store.value.size),
-  clear: () => store.value.clear(),
-  isInBag: (item: Activity) => store.value.has(item),
-})
+export const useBagStore = () => {
+  const isPresent = (item: Activity) => store.value.some(i => i.id === item.id)
+
+  return {
+    totalPrice: computed(() => countTotalPrice(store.value)),
+    addItem: (item: Activity) => {
+      if (!isPresent(item)) {
+        store.value.push(item)
+      }
+    },
+    removeItem: (item: Activity) => {
+      store.value = store.value.filter(i => i.id !== item.id)
+    },
+    items: readonly(store),
+    totalItems: computed(() => store.value.length),
+    clear: () => (store.value = []),
+    isInBag: (item: Activity) => isPresent(item),
+  }
+}

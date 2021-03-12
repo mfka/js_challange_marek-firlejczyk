@@ -53,8 +53,8 @@ describe('ProductCard Component', () => {
     await removeButton.trigger('click')
 
     expect(totalItems.value).toBe(1)
-    expect(items.value.has(mockedActivityTwo)).toBe(false)
-    expect(items.value.has(mockedActivityThree)).toBe(true)
+    expect(items.value.some(el => el.id === mockedActivityTwo.id)).toBe(false)
+    expect(items.value.some(el => el.id === mockedActivityThree.id)).toBe(true)
   })
 
   test('toggle product in WishlistStore on click', async () => {
