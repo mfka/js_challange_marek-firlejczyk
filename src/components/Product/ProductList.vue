@@ -6,19 +6,17 @@
           <ProductCard :product="activity" />
         </li>
       </ul>
-      <Pagination />
     </div>
   </main>
 </template>
 
 <script lang="ts">
 import { useActivityStore } from '../../store/useActivityStore'
-import Pagination from '../common/Pagination.vue'
 import ProductCard from './ProductCard.vue'
 
 export default {
   name: 'ProductList',
-  components: { ProductCard, Pagination },
+  components: { ProductCard },
   setup: () => {
     const { load: loadActivities, activities } = useActivityStore()
 

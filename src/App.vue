@@ -1,13 +1,13 @@
 <template>
-  <Products />
+  <Activities />
 </template>
 
 <script lang="ts">
-import Products from './views/Products.vue'
+import Activities from './views/Activities.vue'
 
 export default {
   name: 'App',
-  components: { Products },
+  components: { Activities },
 }
 </script>
 

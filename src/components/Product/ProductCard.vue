@@ -36,8 +36,7 @@
 </template>
 
 <script lang="ts">
-import { PropType } from '@vue/runtime-core'
-import { computed } from 'vue'
+import { computed, PropType } from 'vue'
 import { ProductType } from '../../infrastructure/types/ProductType'
 import StarIcon from '../Icon/StarIcon.vue'
 import { useBagStore } from '../../store/useBagStore'

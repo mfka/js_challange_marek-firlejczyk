@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { computed, PropType } from '@vue/runtime-core'
+import { computed, PropType } from 'vue'
 export default {
   name: 'BaseIcon',
   props: {
