@@ -1,4 +1,4 @@
-import { computed, readonly, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { Activity } from '../domain/Activity/Activity.entity'
 
 const store = ref(new Set<Activity>())
